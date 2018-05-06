@@ -10,34 +10,34 @@ In this system, BEN (BenchCoin) holders or the native staking coin of the `SideC
 can vote on what we call `Motions`, on a 1 native staking coin to 1 vote scale. 
 
 ## Bench Network Definitions
-* Bench Network - DPOS MultiChain, Powered By BenchCore.
-* RootChain - First blockchain added to the MultiChain. In Bench Network's MultiChain, BenchChain is the `RootChain`
-* BEN / BenchCoin - Native Coin of the Bench Network's `RootChain`
-* BEN holder - an entity that holds some amount of BenchCoins
-* Candidate - a BEN holder that is actively involved in the BenchChain
+* **Bench Network** - DPOS MultiChain, Powered By BenchCore.
+* **RootChain** - First blockchain added to the MultiChain. In Bench Network's MultiChain, BenchChain is the `RootChain`
+* **BEN / BenchCoin** - Native Coin of the Bench Network's `RootChain`
+* **BEN holder** - an entity that holds some amount of BenchCoins
+* **Candidate** - a BEN holder that is actively involved in the BenchChain
   blockchain protocol running a BenchChain Full Node and is competing with other candidates to be elected as a
   Rocketeer.
-* Rocketeer - a candidate that is currently selected among a set of candidates
+* **Rocketeer** - a candidate that is currently selected among a set of candidates
   to be able to sign protocol messages in the BenchChain logic protocol
-* Delegator - an BEN holder that has insured some of its BenchCoins by delegating
+* **Delegator** - an BEN holder that has insured some of its BenchCoins by delegating
   them to a Rocketeer (or a candidate)
-* Insuring BenchCoins - a process of locking BenchCoins in a insure deposit (putting BenchCoins
+* **Insuring BenchCoins** - a process of locking BenchCoins in a insure deposit (putting BenchCoins
   under protocol control). BenchCoins are always insured through a Rocketeer (or
   candidate) process. Insured BenchCoins can be slashed (burned) in case a Rocketeer
   process misbehaves (does not behave according to the protocol specification).
   BEN holders can regain access to their insured BenchCoins if they have not been
   slashed by waiting an Uninsuring period.
-* Uninsuring period - a period of time after which BEN holder gains access to
+* **Uninsuring period** - a period of time after which BEN holder gains access to
   its insured BenchCoins (they can be withdrawn to a user account) or they can be
   re-delegated.
-* Inflationary provisions - inflation is the process of increasing the BEN supply.
+* **Inflationary provisions** - inflation is the process of increasing the BEN supply.
   BenchCoins are periodically created on the Bench Network and issued to insured BEN holders.
   The goal of inflation is to incentize most of the BenchCoins in existence to be insured.
-* Transaction fees - transaction fee is a fee that is included in a Cosmsos Hub
+* **Transaction fees** - transaction fee is a fee that is included in a Cosmsos Hub
   transaction. The fees are collected by the current rocketeer set and
   distributed among Rocketeers and delegators in proportion to their insured
   BEN share.
-* Commission fee - a fee taken from the transaction fees by a rocketeer for
+* **Commission fee** - a fee taken from the transaction fees by a rocketeer for
   their service
   
 
