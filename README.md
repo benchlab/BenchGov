@@ -82,9 +82,9 @@ The governance process is divided in a few steps that are outlined below:
 
 - **Motion Filing:** Motion is filed on the `RootChain`, `SideChain` or `dappChain` along with a deposit. 
 - **Motion Voting:** Once deposit reaches a certain value (`MinDeposit`), motion is confirmed and vote opens. Insured BEN holders can then send `NtxGovVote` transactions to vote on the motion.
-- Software Upgrade Motions:
-  -- **Signal:** Rocketeers start signaling that they are ready to switch to the new version
-  -- **Switch:** Once more than 2/3rd Rocketeers have signaled their readiness to switch, their software automatically flips to the version from the Motion regarding the software upgrade.
+- Software Upgrade Motions: <br>
+  -- **Signal:** Rocketeers start signaling that they are ready to switch to the new version <br>
+  -- **Switch:** Once more than 2/3rd Rocketeers have signaled their readiness to switch, their software automatically flips to the version from the Motion regarding the software upgrade. <br>
   
 ## Motion Filing
 
