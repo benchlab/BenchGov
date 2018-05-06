@@ -75,3 +75,81 @@ The following specification uses *BEN* (BenchCoin) as the native staking token. 
         4.  Vote
 3.  **[Future Implementations](#)**
 
+
+## Bench Governance Overview
+
+The governance process is divided in a few steps that are outlined below:
+
+- **Motion Filing:** Motion is filed on the `RootChain`, `SideChain` or `dappChain` along with a deposit. 
+- **Motion Voting:** Once deposit reaches a certain value (`MinDeposit`), motion is confirmed and vote opens. Insured BEN holders can then send `NtxGovVote` transactions to vote on the motion.
+- Software Upgrade Motions:
+  - **Signal:** Rocketeers start signaling that they are ready to switch to the new version
+  - **Switch:** Once more than 2/3rd Rocketeers have signaled their readiness to switch, their software automatically flips to the version from the Motion regarding the software upgrade.
+  
+## Motion Filing
+
+### Your Right To File A Motion
+
+Any BEN holder, whether insured or uninsured, can file motions by sending a `NtxMotion` transaction. Once a motion is filed, it is identified by its unique `motionID`.
+
+### Preventing Motion Spamming
+
+To prevent spam on the Bench Network in regards to Motion filings, motions must be filed along with a  `motionDeposit`. `motionDeposits` must be paid in with the BEN denomination. Other coins available on the `RootChain`, `SideChains` or `dappChains` can not be used to cover a `motionDeposit`. 
+
+Other BEN holders can increase the Motion's deposit in BEN so that it works out to look likes this:  `0 < deposit < MinDeposit`, by sending a `NtxGovDeposit` transaction. Once the Motion's deposit reaches `MinDeposit`, it will finally enter its voting period, where the filed Motion can be voted on by members of the Bench Network community. 
+
+### Refunded Motion Filing Deposit
+
+There are two instances where BEN holders that deposited BEN on pending Motions in the system, can reclaim their Motion deposit:
+- If the Motion is accepted
+- If the Motion's deposit does not reach `MinDeposit` for a period longer than `MinDepositPeriod`. The default value for `MinDepositPeriod`is 60 days.
+
+If a Motion has no deposits for 60 days, it's closed permanently and would have to be reposted to start the  `MinDepositPeriod`over.
+
+In such instances, BEN holders that deposited can send a `NtxGovClaimDeposit` transaction to retrieve their share of the deposit.
+
+### Motion Types and Categories 
+
+In the initial version of the governance module, there are two types of proposal:
+- `PlainTextProposal`. All the proposals that do not involve a modification of the source code go under this type. For example, an opinion poll would use a proposal of type `PlainTextProposal`
+- `SoftwareUpgradeProposal`. If accepted, validators are expected to update their software in accordance with the proposal. They must do so by following a 2-steps process described in the [Software Upgrade](#software-upgrade) section below. Software upgrade roadmap may be discussed and agreed on via `PlainTextProposals`, but actual software upgrades must be performed via `SoftwareUpgradeProposals`.
+
+There are two categories of proposal:
+- `Regular`
+- `Emergency`
+
+Both are essentially identical other than `Urgent` motions having the ability to be accepted faster, as long as the Emergency conditions of an Emergency proposal are met. 
+
+## Vote
+
+### Participants
+
+*Participants* are users that have the right to vote. On the Bench Network, participants are insured BEN holders. Uninsured BEN holders and other users do not get the right to participate in the Bench governance. However, they can file Motions and make Motion deposits.
+
+### Voting Span
+
+Once a Motion reaches `MinDeposit`, it immediately enters what's is called a `Voting Span`. We define `Voting Span` as the interval between the moment the vote around a Motion opens and the moment the vote around a Motion closes. `Voting Span` should always be shorter than `Uninsured Span` to prevent double voting. The default value for `Voting Span` when filing a Motion is 2 weeks.
+
+### How You Vote
+
+When casting a vote on a Motion, a participant has four options to choose from, although other options can be set by the person or network filing the Motion. 
+
+The default voting options includes the following options: 
+- `Yes`
+- `No`
+- `Veto` 
+- `Abstain` 
+- `NotEmergency`
+
+Explanations of voting options: 
+
+- `Veto` counts as `No` but also lets the network know that voter is Vetoing the Motion and will not accept the outcome of the Motion's vote. 
+- `Abstain` doesn't count as a `Yes` or `No` but does allow voters to abstain from voting on a Motion, while also accepting the outcome of the Motion's vote. 
+- `NotEmergency` only appears on for Emergency Motions and allows voters to proclaim a Motion as non-urgent. 
+
+### Minimum Vote 
+
+The ability for us to use Minimum Voting rules for filed Motions, is still in the works but apart of our Governance model. Our 2nd software upgrade for Bench Network will introduce a way for a minimum percentage of `Voting Fuel`, that's required for the result of a Motion's vote to considered valid by the network. 
+
+Currently, participation is ensured via the combination of inheritance and a Rocketeer's punishment for his/her failure to vote on a Motion. 
+
