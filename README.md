@@ -52,8 +52,6 @@ Next is a list of features the Bench Governance currently supports:
 - **Signal and switch:** If a motion of type `SoftwareUpgradeMotion` is accepted, `Rocketeers` can signal it and switch once enough rocketeers have signalled.
 - **Claiming deposit:** Users that made a deposit on Motions within a chain can recover their deposits if the motion was accepted OR if the motion in question never entered voting period.
 
-Features that may be added in the future are described in [Future improvements](future_improvements.md)
-
 This particular Governance will be used in the Bench Network, which will become the first Chain and therefore the `RootChain`
 within the Bench Network.
 
