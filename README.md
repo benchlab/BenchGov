@@ -6,37 +6,37 @@ This paper specifies the Governance module of the Bench Network or anything fork
 The Governance enables Bench Network's MultiChain to support a governance system on both the `RootChain`, `SideChains` and `dappChains`
 integrated with the Bench Network. 
 
-In this system, BEN (BenchCoin) holders or the native staking coin of the `SideChain` or `dappChain` in particular
+In this system, MARK (BenchMark) holders or the native staking coin of the `SideChain` or `dappChain` in particular
 can vote on what we call `Motions`, on a 1 native staking coin to 1 vote scale. 
 
 ## Bench Network Definitions
 * **Bench Network** - DPOS MultiChain, Powered By BenchCore.
 * **RootChain** - First blockchain added to the MultiChain. In Bench Network's MultiChain, BenchChain is the `RootChain`
-* **BEN / BenchCoin** - Native Coin of the Bench Network's `RootChain`
-* **BEN holder** - an entity that holds some amount of BenchCoins
-* **Candidate** - a BEN holder that is actively involved in the BenchChain
+* **MARK / BenchMark** - Native Mark of the Bench Network's `RootChain`
+* **MARK holder** - an entity that holds some amount of BenchMarks
+* **Candidate** - a MARK holder that is actively involved in the BenchChain
   blockchain protocol running a BenchChain Full Node and is competing with other candidates to be elected as a
   Rocketeer.
 * **Rocketeer** - a candidate that is currently selected among a set of candidates
   to be able to sign protocol messages in the BenchChain logic protocol
-* **Delegator** - an BEN holder that has insured some of its BenchCoins by delegating
+* **Delegator** - an MARK holder that has insured some of its BenchMarks by delegating
   them to a Rocketeer (or a candidate)
-* **Insuring BenchCoins** - a process of locking BenchCoins in a insure deposit (putting BenchCoins
-  under protocol control). BenchCoins are always insured through a Rocketeer (or
-  candidate) process. Insured BenchCoins can be slashed (burned) in case a Rocketeer
+* **Insuring BenchMarks** - a process of locking BenchMarks in a insure deposit (putting BenchMarks
+  under protocol control). BenchMarks are always insured through a Rocketeer (or
+  candidate) process. Insured BenchMarks can be slashed (burned) in case a Rocketeer
   process misbehaves (does not behave according to the protocol specification).
-  BEN holders can regain access to their insured BenchCoins if they have not been
+  MARK holders can regain access to their insured BenchMarks if they have not been
   slashed by waiting an Uninsuring period.
-* **Uninsuring period** - a period of time after which BEN holder gains access to
-  its insured BenchCoins (they can be withdrawn to a user account) or they can be
+* **Uninsuring period** - a period of time after which MARK holder gains access to
+  its insured BenchMarks (they can be withdrawn to a user account) or they can be
   re-delegated.
-* **Inflationary provisions** - inflation is the process of increasing the BEN supply.
-  BenchCoins are periodically created on the Bench Network and issued to insured BEN holders.
-  The goal of inflation is to incentize most of the BenchCoins in existence to be insured.
+* **Inflationary provisions** - inflation is the process of increasing the MARK supply.
+  BenchMarks are periodically created on the Bench Network and issued to insured MARK holders.
+  The goal of inflation is to incentize most of the BenchMarks in existence to be insured.
 * **Transaction fees** - transaction fee is a fee that is included in a Cosmsos Hub
   transaction. The fees are collected by the current rocketeer set and
   distributed among Rocketeers and delegators in proportion to their insured
-  BEN share.
+  MARK share.
 * **Commission fee** - a fee taken from the transaction fees by a rocketeer for
   their service
   
@@ -58,7 +58,7 @@ within the Bench Network.
 
 ## Table of Contents
 
-The following specification uses *BEN* (BenchCoin) as the native staking token. The module can be adapted to any Proof-Of-Stake blockchain by replacing *BEN* (BenchCoin) with the native staking token of the chain.
+The following specification uses *MARK* (BenchMarks) as the native staking token. The module can be adapted to any Proof-Of-Stake blockchain by replacing *MARK* (BenchMarks) with the native staking token of the chain.
 
 1.  **[Design overview](#)**
 2.  **Implementation**
@@ -79,7 +79,7 @@ The following specification uses *BEN* (BenchCoin) as the native staking token. 
 The governance process is divided in a few steps that are outlined below:
 
 - **Motion Filing:** Motion is filed on the `RootChain`, `SideChain` or `dappChain` along with a deposit. 
-- **Motion Voting:** Once deposit reaches a certain value (`MinDeposit`), motion is confirmed and vote opens. Insured BEN holders can then send `NtxGovVote` transactions to vote on the motion.
+- **Motion Voting:** Once deposit reaches a certain value (`MinDeposit`), motion is confirmed and vote opens. Insured MARK holders can then send `NtxGovVote` transactions to vote on the motion.
 - Software Upgrade Motions: <br>
   -- **Signal:** Rocketeers start signaling that they are ready to switch to the new version <br>
   -- **Switch:** Once more than 2/3rd Rocketeers have signaled their readiness to switch, their software automatically flips to the version from the Motion regarding the software upgrade. <br>
@@ -88,23 +88,23 @@ The governance process is divided in a few steps that are outlined below:
 
 ### Your Right To File A Motion
 
-Any BEN holder, whether insured or uninsured, can file motions by sending a `NtxMotion` transaction. Once a motion is filed, it is identified by its unique `motionID`.
+Any MARK holder, whether insured or uninsured, can file motions by sending a `NtxMotion` transaction. Once a motion is filed, it is identified by its unique `motionID`.
 
 ### Preventing Motion Spamming
 
-To prevent spam on the Bench Network in regards to Motion filings, motions must be filed along with a  `motionDeposit`. `motionDeposits` must be paid in with the BEN denomination. Other coins available on the `RootChain`, `SideChains` or `dappChains` can not be used to cover a `motionDeposit`. 
+To prevent spam on the Bench Network in regards to Motion filings, motions must be filed along with a  `motionDeposit`. `motionDeposits` must be paid in with the MARK denomination. Other coins available on the `RootChain`, `SideChains` or `dappChains` can not be used to cover a `motionDeposit`. 
 
-Other BEN holders can increase the Motion's deposit in BEN so that it works out to look likes this:  `0 < deposit < MinDeposit`, by sending a `NtxGovDeposit` transaction. Once the Motion's deposit reaches `MinDeposit`, it will finally enter its voting period, where the filed Motion can be voted on by members of the Bench Network community. 
+Other MARK holders can increase the Motion's deposit in MARK so that it works out to look likes this:  `0 < deposit < MinDeposit`, by sending a `NtxGovDeposit` transaction. Once the Motion's deposit reaches `MinDeposit`, it will finally enter its voting period, where the filed Motion can be voted on by members of the Bench Network community. 
 
 ### Refunded Motion Filing Deposit
 
-There are two instances where BEN holders that deposited BEN on pending Motions in the system, can reclaim their Motion deposit:
+There are two instances where MARK holders that deposited MARK on pending Motions in the system, can reclaim their Motion deposit:
 - If the Motion is accepted
 - If the Motion's deposit does not reach `MinDeposit` for a period longer than `MinDepositPeriod`. The default value for `MinDepositPeriod`is 60 days.
 
 If a Motion has no deposits for 60 days, it's closed permanently and would have to be reposted to start the  `MinDepositPeriod`over.
 
-In such instances, BEN holders that deposited can send a `NtxGovClaimDeposit` transaction to retrieve their share of the deposit.
+In such instances, MARK holders that deposited can send a `NtxGovClaimDeposit` transaction to retrieve their share of the deposit.
 
 ### Motion Types and Categories 
 
@@ -122,7 +122,7 @@ Both are essentially identical other than `Urgent` motions having the ability to
 
 ### Participants
 
-*Participants* are users that have the right to vote. On the Bench Network, participants are insured BEN holders. Uninsured BEN holders and other users do not get the right to participate in the Bench governance. However, they can file Motions and make Motion deposits.
+*Participants* are users that have the right to vote. On the Bench Network, participants are insured MARK holders. Uninsured MARK holders and other users do not get the right to participate in the Bench governance. However, they can file Motions and make Motion deposits.
 
 ### Voting Span
 
